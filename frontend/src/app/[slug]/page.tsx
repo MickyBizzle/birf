@@ -1,9 +1,7 @@
-import { SIZES } from "@/constants/SIZES";
 import { contentRender } from "@/lib/contentRender";
 import { imgUrl } from "@/lib/helpers";
 import { Center, Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
-import { Test } from "./Test";
 
 const getData = async (slug: string) => {
   const result = await fetch(
@@ -40,7 +38,6 @@ const PageSlug = async ({ params }: { params: { slug: string } }) => {
           {title}
         </Heading>
       </Center>
-      <Test stuff={content} />
       <Flex flexDir="column" mx="auto" my="4" maxW="3xl" px="4" gap="2">
         {contentRender(content)}
       </Flex>
