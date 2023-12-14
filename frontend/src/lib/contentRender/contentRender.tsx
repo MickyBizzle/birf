@@ -17,7 +17,7 @@ export interface ChildrenEntity1 {
 }
 
 export const contentRender = (content: Content[]) => {
-  const headingSizes = {
+  const headingSizes: { [key: number]: string } = {
     1: "xl",
     2: "lg",
     3: "md",
@@ -25,12 +25,13 @@ export const contentRender = (content: Content[]) => {
   };
   // recursively render content
   return content.map((item, i) => {
+    if (!item.children) return null;
     if (item.type === "heading") {
       return (
         <Heading
           key={i}
-          as={`h${item.level || 1}`}
-          size={headingSizes[item.level]}
+          as={`h${item.level || 1}` as any}
+          size={headingSizes[item?.level || 2]}
         >
           {item.children[0].text}
         </Heading>
@@ -43,11 +44,14 @@ export const contentRender = (content: Content[]) => {
       return (
         <Box as="ul" key={i}>
           {item.children &&
-            item.children.map((item, i) => (
-              <Box as="li" key={i} ml="8">
-                {item.children[0].text}
-              </Box>
-            ))}
+            item.children.map((item, i) => {
+              if (!item.children) return null;
+              return (
+                <Box as="li" key={i} ml="8">
+                  {item.children[0].text}
+                </Box>
+              );
+            })}
         </Box>
       );
     }
