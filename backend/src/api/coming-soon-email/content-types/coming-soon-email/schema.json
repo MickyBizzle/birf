@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coming_soon_emails",
+  "info": {
+    "singularName": "coming-soon-email",
+    "pluralName": "coming-soon-emails",
+    "displayName": "Coming soon email"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
