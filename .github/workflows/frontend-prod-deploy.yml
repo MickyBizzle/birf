@@ -1,0 +1,26 @@
+name: frontend-prod-deploy
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "frontend/**"
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy using SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd /opt/birf/frontend
+          git pull origin master
+          yarn --frozen-lockfile
+          yarn build
+          pm2 restart frontend
+          
