@@ -46,6 +46,7 @@ export const Navbar = () => {
         {socialLinks.map(({ icon: Icon, url }) => (
           <IconButton
             as={Link}
+            target="_blank"
             href={url}
             aria-label={url}
             icon={<Icon />}
