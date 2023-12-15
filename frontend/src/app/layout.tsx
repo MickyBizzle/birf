@@ -18,6 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fonts.lato.variable}>
+      <head>
+        {process.env.NODE_ENV === "production" ? (
+          <script
+            async
+            src="https://analytics.birf.co.uk/script.js"
+            data-website-id="a76063c8-c44b-4493-ad4b-7f8ad2c906e7"
+          ></script>
+        ) : null}
+      </head>
       <body>
         <Providers>
           <Navbar />
