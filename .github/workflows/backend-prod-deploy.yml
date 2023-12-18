@@ -18,7 +18,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          cd /opt/birf/backend
+          cd ~/opt/birf/backend
           git pull origin master
           yarn --frozen-lockfile
           NODE_ENV=production yarn build
