@@ -23,7 +23,6 @@ export const Navbar = () => {
           <Image src="/images/logos/light.svg" alt="BIRF logo" layout="fill" />
         </Link>
       </Flex>
-
       {process.env.NODE_ENV === "development" && (
         <Tag position="fixed" bottom={4} right={4} zIndex={10000}>
           {bp}
