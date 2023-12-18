@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export const Navbar = () => {
   const bp = useBreakpoint();
-
   return (
     <Flex
       h={SIZES.NAVBAR_HEIGHT}
