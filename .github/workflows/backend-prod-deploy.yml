@@ -1,4 +1,4 @@
-name: backend-prod-deploy
+name: frontend-prod-deploy
 
 on:
   push:
@@ -6,21 +6,20 @@ on:
       - master
     paths:
       - "backend/**"
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy using SSH
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        script: |
-          cd ~/opt/birf/backend
-          git pull origin master
-          yarn --frozen-lockfile
-          NODE_ENV=production yarn build
-          pm2 restart backend
-          
+      - name: Deploy using SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /opt/birf/backend
+            git pull origin master
+            yarn --frozen-lockfile
+            yarn build
+            pm2 restart backend
