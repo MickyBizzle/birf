@@ -4,6 +4,7 @@ import { fonts } from "./fonts";
 import { Navbar } from "./navbar";
 import { Flex } from "@chakra-ui/react";
 import { SIZES } from "@/constants/SIZES";
+import { Footer } from "./footer";
 
 export const metadata: Metadata = {
   title: "BIRF - British Isles Rabbit Fancy",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <Flex pt={SIZES.NAVBAR_HEIGHT}>{children}</Flex>
+          <Footer />
         </Providers>
       </body>
     </html>
